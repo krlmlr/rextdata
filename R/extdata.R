@@ -34,6 +34,7 @@ extdata <- function(..., assign.env = parent.frame()) {
 }
 
 #' @rdname extdata
+#' @keywords internal
 extdata_ <- function(..., .dots, assign.env = parent.frame()) {
   dots <- lazyeval::all_dots(.dots, ..., all_named = TRUE)
 

@@ -44,4 +44,5 @@ extdata(fortytwo = readRDS(system.file("extdata", "fortytwo.rds",
 extdata(fortytwo)
 }
 }
+\keyword{internal}
 
