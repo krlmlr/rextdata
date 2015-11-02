@@ -13,3 +13,4 @@ Imports: lazyeval
 Collate:
     'extdata.R'
     'fortytwo.R'
+    'rextdata.R'
