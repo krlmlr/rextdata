@@ -10,5 +10,5 @@ GitHub: https://github.com/krlmlr/rextdata
 BugReports: https://github.com/krlmlr/rextdata/issues
 RoxygenNote: 5.0.0
 Collate:
-    'lazydata.R'
+    'extdata.R'
     'fortytwo.R'
