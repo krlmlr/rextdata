@@ -1,3 +1,4 @@
+Encoding: UTF-8
 Package: rextdata
 Title: Simple Access to Data Stored in "extdata" Directory
 Version: 0.0-0
@@ -5,10 +6,10 @@ Authors@R: as.person("Kirill Müller <krlmlr+r@mailbox.org> [aut, cre]")
 Description: Provides helper functions to access data files in the "extdata"
     directory.
 License: GPL-3
-Encoding: UTF-8
 GitHub: https://github.com/krlmlr/rextdata
 BugReports: https://github.com/krlmlr/rextdata/issues
 RoxygenNote: 5.0.0
+Imports: lazyeval
 Collate:
     'extdata.R'
     'fortytwo.R'
