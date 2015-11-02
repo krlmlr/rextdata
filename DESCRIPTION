@@ -1,14 +1,13 @@
-Package: lazydata
-Title: What the Package Does (one line, title case)
+Package: rextdata
+Title: Simple Access to Data Stored in "extdata" Directory
 Version: 0.0-0
 Authors@R: as.person("Kirill Müller <krlmlr+r@mailbox.org> [aut, cre]")
-Description: What the package does (one paragraph).
-Depends:
-    R (>= 3.2.2)
+Description: Provides helper functions to access data files in the "extdata"
+    directory.
 License: GPL-3
-LazyData: true
 Encoding: UTF-8
-GitHub: https://github.com/krlmlr/
+GitHub: https://github.com/krlmlr/rextdata
+BugReports: https://github.com/krlmlr/rextdata/issues
 RoxygenNote: 5.0.0
 Collate:
     'lazydata.R'
