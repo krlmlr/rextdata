@@ -78,6 +78,6 @@ auto_extdata <- function(assign.env = parent.frame()) {
   extdata_(.dots = names, assign.env = assign.env)
 }
 
-extdata_path <- function(package.env = assign.env) {
+extdata_path <- function(package.env) {
   system.file("extdata", package = packageName(package.env))
 }
