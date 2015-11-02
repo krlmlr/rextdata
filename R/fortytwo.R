@@ -1,6 +1,6 @@
-#' Fortytwo
+#' The answer
 #'
-#' The answer.
+#' To the question.
 #' @export
 "fortytwo"
 

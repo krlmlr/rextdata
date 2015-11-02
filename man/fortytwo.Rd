@@ -3,13 +3,13 @@
 \docType{data}
 \name{fortytwo}
 \alias{fortytwo}
-\title{Fortytwo}
+\title{The answer}
 \format{An object of class \code{numeric} of length 1.}
 \usage{
 fortytwo
 }
 \description{
-The answer.
+To the question.
 }
 \keyword{datasets}
 
