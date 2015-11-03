@@ -29,9 +29,8 @@
 #' # A shorter version of the above
 #' extdata(fortytwo)
 #' }
-extdata <- function(..., assign.env = parent.frame()) {
-  extdata_(.dots = lazyeval::lazy_dots(...), assign.env = assign.env)
-}
+#' @name extdata
+lazyforward::def("extdata")
 
 #' @rdname extdata
 #' @keywords internal

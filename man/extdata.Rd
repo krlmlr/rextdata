@@ -5,16 +5,14 @@
 \alias{extdata_}
 \title{Create a delayed assignment for a dataset}
 \usage{
-extdata(..., assign.env = parent.frame())
-
 extdata_(..., .dots, assign.env = parent.frame())
 }
 \arguments{
 \item{...}{Expressions for which delayed assignments are created.}
 
-\item{assign.env}{The environment in which to create the delayed assignments.}
-
 \item{.dots}{Expressions as lazy objects.}
+
+\item{assign.env}{The environment in which to create the delayed assignments.}
 }
 \description{
 This function creates one or more delayed assignments.  It is focused on data

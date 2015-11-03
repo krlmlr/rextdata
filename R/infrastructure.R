@@ -6,29 +6,66 @@
 #' to \code{extdata} files.
 #'
 #' @inheritParams devtools::as.package
-#' @param compress a logical specifying whether saving to a named file is to use
-#'   \code{"gzip"} compression, or one of \code{"gzip"}, \code{"bzip2"} or
-#'   \code{"xz"} to indicate the type of compression to be used.
+#' @inheritParams use_extdata
+#' @export
 use_rextdata <- function(compress = "xz", pkg = ".") {
   require_devtools()
 
   pkg <- devtools::as.package(pkg)
 
   devtools::use_package("rextdata", pkg = pkg)
+
   inst_extdata <- inst_extdata_path(pkg)
-  dir.create(inst_extdata)
-  data <- devtools::load_data(pkg)
-  mapply(saveRDS, data, file.path(inst_extdata, paste0(names(data), ".rds")),
-         MoreArgs = list(compress = compress))
-  writeLines(
-    "rextdata::auto_extdata()",
-    file.path(pkg$path, "R", "aaa-rextdata.R"))
-  message("* Created directory inst/extdata\n",
-          if (length(data) > 0) {
-            paste("* Saved datasets", paste(names(data), collapse = ", "), "as .rds files\n")
-          },
-          "* Created helper file R/aaa-rextdata.R\n",
-          "Now include your datasets as .rds files in the inst/extdata directory.")
+  if (!file.exists(inst_extdata)) {
+    dir.create(inst_extdata, recursive = TRUE, showWarnings = FALSE)
+    message("* Created directory inst/extdata")
+  }
+
+  auto_extdata <- file.path("R", "aaa-rextdata.R")
+  auto_extdata_path <- file.path(pkg$path, auto_extdata)
+  if (!file.exists(auto_extdata)) {
+    writeLines("rextdata::auto_extdata()", auto_extdata_path)
+    message("* Created helper file ", auto_extdata)
+  }
+
+  use_extdata_(.dots = devtools::load_data(pkg), pkg = pkg, compress = compress)
+
+  message("Now include your datasets as .rds files in the inst/extdata directory.")
+}
+
+#' Use an object as external dataset
+#'
+#' Call this function to save an object as \code{.rds} file in the
+#' \code{inst/extdata} directory for later retrieval via \code{\link{extdata}}
+#' or \code{\link{auto_extdata}}.
+#'
+#'
+#' @param ... objects to save in \code{name} or \code{name = value} format
+#' @param compress a logical specifying whether saving to a named file is to use
+#'   \code{"gzip"} compression, or one of \code{"gzip"}, \code{"bzip2"} or
+#'   \code{"xz"} to indicate the type of compression to be used.
+#' @inheritParams use_rextdata
+#' @export
+#' @name use_extdata
+lazyforward::def("use_extdata")
+
+#' @rdname use_extdata
+#' @keywords internal
+#' @export
+use_extdata_ <- function(..., .dots, compress = "xz", pkg = ".") {
+  dots <- lazyeval::all_dots(.dots, ..., all_named = TRUE)
+
+  if (length(dots) == 0L) return()
+
+  mapply(
+    function(dot, file) {
+      saveRDS(lazyeval::lazy_eval(dot), file, compress = compress)
+    },
+    dots,
+    file.path(inst_extdata, paste0(names(dots), ".rds")))
+
+  message("* Saved datasets ", paste(names(dots), collapse = ", "),
+          " to ")
 }
 
 require_devtools <- function() {
