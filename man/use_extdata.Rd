@@ -4,7 +4,8 @@
 \alias{use_extdata}
 \title{Use an object as external dataset}
 \usage{
-use_extdata(..., compress = "xz", pkg = ".", env = parent.frame())
+use_extdata(..., compress = "xz", pkg = ".", overwrite = FALSE,
+  env = parent.frame())
 }
 \arguments{
 \item{...}{objects to save in \code{name} or \code{name = value} format}
@@ -12,6 +13,8 @@ use_extdata(..., compress = "xz", pkg = ".", env = parent.frame())
 \item{compress}{a logical specifying whether saving to a named file is to use
 \code{"gzip"} compression, or one of \code{"gzip"}, \code{"bzip2"} or
 \code{"xz"} to indicate the type of compression to be used.}
+
+\item{overwrite}{overwrite existing files?}
 
 \item{env}{the environment in which to evaluate the expressions}
 }
