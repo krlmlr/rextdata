@@ -10,7 +10,7 @@ extdata_ <- function(..., .dots, assign.env = parent.frame()) {
     function(dot) {
       if (is.name(dot$expr)) {
         file_path <- file.path(extdata_path(assign.env), paste0(as.character(dot$expr), ".rds"))
-        dot$expr <- bquote({message("Loading ", .(file_path)); readRDS(.(file_path))})
+        dot$expr <- bquote(readRDS(.(file_path)))
       }
 
       dot
