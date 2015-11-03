@@ -1,5 +1,31 @@
 #' Create a delayed assignment for a dataset
 #'
+#' An SE version of \code{\link{extdata}}
+#'
+#' @param .dots Expressions as lazy objects.
+#' @export
+#' @inheritParams extdata
+#' @keywords internal
+extdata_ <- function(..., .dots, assign.env = parent.frame()) {
+  dots <- lazyeval::all_dots(.dots, ..., all_named = TRUE)
+
+  dots_expr <- lapply(
+    dots,
+    function(dot) {
+      if (is.name(dot$expr)) {
+        file_path <- file.path(extdata_path(assign.env), paste0(as.character(dot$expr), ".rds"))
+        dot$expr <- bquote(readRDS(.(file_path)))
+      }
+
+      dot
+  })
+
+  ret <- mapply(extdata_one, names(dots_expr), dots_expr, MoreArgs = list(assign.env = assign.env))
+  invisible(ret)
+}
+
+#' Create a delayed assignment for a dataset
+#'
 #' This function creates one or more delayed assignments.  It is focused on data
 #' stored in the \code{extdata} directory, and therefore especially useful for
 #' package development.  The main advantages over R's internal data loading
@@ -29,28 +55,9 @@
 #' # A shorter version of the above
 #' extdata(fortytwo)
 #' }
-#' @name extdata
-lazyforward::def("extdata")
+#' @export
+extdata <- lazyforward::lazyforward("extdata_")
 
-#' @rdname extdata
-#' @keywords internal
-extdata_ <- function(..., .dots, assign.env = parent.frame()) {
-  dots <- lazyeval::all_dots(.dots, ..., all_named = TRUE)
-
-  dots_expr <- lapply(
-    dots,
-    function(dot) {
-      if (is.name(dot$expr)) {
-        file_path <- file.path(extdata_path(assign.env), paste0(as.character(dot$expr), ".rds"))
-        dot$expr <- bquote(readRDS(.(file_path)))
-      }
-
-      dot
-  })
-
-  ret <- mapply(extdata_one, names(dots_expr), dots_expr, MoreArgs = list(assign.env = assign.env))
-  invisible(ret)
-}
 
 extdata_one <- function(name, expr, assign.env = parent.frame()) {
   delayedAssign(name, lazyeval::lazy_eval(expr), assign.env = assign.env)
