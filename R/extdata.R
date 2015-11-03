@@ -39,7 +39,6 @@ extdata_ <- function(..., .dots, assign.env = parent.frame()) {
 #' above.  See the "lazyeval" vignette for details.
 #'
 #' @param ... Expressions for which delayed assignments are created.
-#' @param .dots Expressions as lazy objects.
 #' @param assign.env The environment in which to create the delayed assignments.
 #'
 #' @examples
