@@ -33,7 +33,10 @@ use_rextdata <- function(compress = "xz", pkg = ".") {
   use_extdata_(.dots = loaded$data, pkg = pkg,
                compress = compress, env = loaded$env)
 
-  message("Now include your datasets as .rds files in the inst/extdata directory.")
+  message("* Removed data directory")
+  unlink(file.path(pkg$path, "data"), recursive = TRUE)
+
+  message("Now include additional datasets as .rds files in the inst/extdata directory.")
 }
 
 #' Use an object as external dataset
