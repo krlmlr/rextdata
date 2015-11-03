@@ -41,8 +41,8 @@ use_rextdata <- function(compress = "xz", pkg = ".") {
 
 #' Use an object as external dataset
 #' @template se
-#' @templateVar name extdata
 #' @export
+#' @templateVar name use_extdata
 use_extdata_ <- function(..., .dots, compress = "xz", pkg = ".",
                          overwrite = FALSE, env = parent.frame())
 {

@@ -8,14 +8,22 @@ use_extdata_(..., .dots, compress = "xz", pkg = ".", overwrite = FALSE,
   env = parent.frame())
 }
 \arguments{
-\item{...}{Expressions for which delayed assignments are created.}
+\item{...}{objects to save in \code{name} or \code{name = value} format}
 
 \item{.dots}{Expressions as lazy objects.}
+
+\item{compress}{a logical specifying whether saving to a named file is to use
+\code{"gzip"} compression, or one of \code{"gzip"}, \code{"bzip2"} or
+\code{"xz"} to indicate the type of compression to be used.}
+
+\item{overwrite}{overwrite existing files?}
+
+\item{env}{the environment in which to evaluate the expressions}
 }
 \description{
 Use an object as external dataset
 
-A version of \code{\link{extdata}} that uses standard
+A version of \code{\link{use_extdata}} that uses standard
   evaluation and is suitable for programming.
 }
 \keyword{internal}
