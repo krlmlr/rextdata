@@ -55,6 +55,8 @@ extdata <- lazyforward::lazyforward("extdata_")
 
 
 extdata_one <- function(name, expr, assign.env = parent.frame()) {
+  force(name)
+  force(expr)
   delayedAssign(name, lazyeval::lazy_eval(expr), assign.env = assign.env)
   invisible(name)
 }
