@@ -14,3 +14,4 @@ Imports:
     lazyforward
 Suggests:
     devtools
+Remotes: krlmlr/lazyforward
