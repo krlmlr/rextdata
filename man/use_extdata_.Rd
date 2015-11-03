@@ -4,7 +4,7 @@
 \alias{use_extdata_}
 \title{Use an object as external dataset}
 \usage{
-use_extdata_(..., .dots, compress = "xz", pkg = ".")
+use_extdata_(..., .dots, compress = "xz", pkg = ".", env = parent.frame())
 }
 \arguments{
 \item{...}{Expressions for which delayed assignments are created.}

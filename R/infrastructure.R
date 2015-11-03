@@ -28,7 +28,10 @@ use_rextdata <- function(compress = "xz", pkg = ".") {
     message("* Created helper file ", auto_extdata)
   }
 
-  use_extdata_(.dots = devtools::load_data(pkg), pkg = pkg, compress = compress)
+  loaded <- devtools::load_all(pkg)
+
+  use_extdata_(.dots = loaded$data, pkg = pkg,
+               compress = compress, env = loaded$env)
 
   message("Now include your datasets as .rds files in the inst/extdata directory.")
 }
@@ -37,7 +40,9 @@ use_rextdata <- function(compress = "xz", pkg = ".") {
 #' @template se
 #' @templateVar name extdata
 #' @export
-use_extdata_ <- function(..., .dots, compress = "xz", pkg = ".") {
+use_extdata_ <- function(..., .dots, compress = "xz", pkg = ".",
+                         env = parent.frame())
+{
   dots <- lazyeval::all_dots(.dots, ..., all_named = TRUE)
 
   if (length(dots) == 0L) return()
@@ -50,7 +55,7 @@ use_extdata_ <- function(..., .dots, compress = "xz", pkg = ".") {
 
   mapply(
     function(dot, file) {
-      saveRDS(lazyeval::lazy_eval(dot), file, compress = compress)
+      saveRDS(lazyeval::lazy_eval(dot, env), file, compress = compress)
     },
     dots,
     file.path(inst_extdata, paste0(names(dots), ".rds")))
@@ -70,6 +75,7 @@ use_extdata_ <- function(..., .dots, compress = "xz", pkg = ".") {
 #' @param compress a logical specifying whether saving to a named file is to use
 #'   \code{"gzip"} compression, or one of \code{"gzip"}, \code{"bzip2"} or
 #'   \code{"xz"} to indicate the type of compression to be used.
+#' @param env the environment in which to evaluate the expressions
 #' @inheritParams use_rextdata
 #' @export
 use_extdata <- lazyforward::lazyforward("use_extdata_")

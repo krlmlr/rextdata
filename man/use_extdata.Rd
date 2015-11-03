@@ -4,7 +4,7 @@
 \alias{use_extdata}
 \title{Use an object as external dataset}
 \usage{
-use_extdata(..., compress = "xz", pkg = ".")
+use_extdata(..., compress = "xz", pkg = ".", env = parent.frame())
 }
 \arguments{
 \item{...}{objects to save in \code{name} or \code{name = value} format}
@@ -12,6 +12,8 @@ use_extdata(..., compress = "xz", pkg = ".")
 \item{compress}{a logical specifying whether saving to a named file is to use
 \code{"gzip"} compression, or one of \code{"gzip"}, \code{"bzip2"} or
 \code{"xz"} to indicate the type of compression to be used.}
+
+\item{env}{the environment in which to evaluate the expressions}
 }
 \description{
 Call this function to save an object as \code{.rds} file in the
