@@ -10,7 +10,3 @@ GitHub: https://github.com/krlmlr/rextdata
 BugReports: https://github.com/krlmlr/rextdata/issues
 RoxygenNote: 5.0.0
 Imports: lazyeval
-Collate:
-    'extdata.R'
-    'fortytwo.R'
-    'rextdata.R'
