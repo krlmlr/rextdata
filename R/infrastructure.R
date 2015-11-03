@@ -42,6 +42,12 @@ use_extdata_ <- function(..., .dots, compress = "xz", pkg = ".") {
 
   if (length(dots) == 0L) return()
 
+  require_devtools()
+
+  pkg <- devtools::as.package(pkg)
+
+  inst_extdata <- inst_extdata_path(pkg)
+
   mapply(
     function(dot, file) {
       saveRDS(lazyeval::lazy_eval(dot), file, compress = compress)
