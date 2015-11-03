@@ -34,23 +34,8 @@ use_rextdata <- function(compress = "xz", pkg = ".") {
 }
 
 #' Use an object as external dataset
-#'
-#' Call this function to save an object as \code{.rds} file in the
-#' \code{inst/extdata} directory for later retrieval via \code{\link{extdata}}
-#' or \code{\link{auto_extdata}}.
-#'
-#'
-#' @param ... objects to save in \code{name} or \code{name = value} format
-#' @param compress a logical specifying whether saving to a named file is to use
-#'   \code{"gzip"} compression, or one of \code{"gzip"}, \code{"bzip2"} or
-#'   \code{"xz"} to indicate the type of compression to be used.
-#' @inheritParams use_rextdata
-#' @export
-#' @name use_extdata
-lazyforward::def("use_extdata")
-
-#' @rdname use_extdata
-#' @keywords internal
+#' @template se
+#' @templateVar name extdata
 #' @export
 use_extdata_ <- function(..., .dots, compress = "xz", pkg = ".") {
   dots <- lazyeval::all_dots(.dots, ..., all_named = TRUE)
@@ -67,6 +52,21 @@ use_extdata_ <- function(..., .dots, compress = "xz", pkg = ".") {
   message("* Saved datasets ", paste(names(dots), collapse = ", "),
           " to ")
 }
+
+#' Use an object as external dataset
+#'
+#' Call this function to save an object as \code{.rds} file in the
+#' \code{inst/extdata} directory for later retrieval via \code{\link{extdata}}
+#' or \code{\link{auto_extdata}}.
+#'
+#'
+#' @param ... objects to save in \code{name} or \code{name = value} format
+#' @param compress a logical specifying whether saving to a named file is to use
+#'   \code{"gzip"} compression, or one of \code{"gzip"}, \code{"bzip2"} or
+#'   \code{"xz"} to indicate the type of compression to be used.
+#' @inheritParams use_rextdata
+#' @export
+use_extdata <- lazyforward::lazyforward("use_extdata_")
 
 require_devtools <- function() {
   requireNamespace("devtools")
