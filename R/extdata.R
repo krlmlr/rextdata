@@ -1,7 +1,7 @@
 #' Create a delayed assignment for a dataset
 #' @template se
-#' @templateVar name extdata
 #' @export
+#' @templateVar name extdata
 extdata_ <- function(..., .dots, assign.env = parent.frame()) {
   dots <- lazyeval::all_dots(.dots, ..., all_named = TRUE)
 
