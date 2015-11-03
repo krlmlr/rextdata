@@ -1,3 +1,9 @@
+0.0-3
+=====
+
+- Fix `use_rextdata()`; will delete `data/` subdirectory
+- `use_extdata()` gains `env` argument
+
 0.0-2
 =====
 
