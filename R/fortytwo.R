@@ -5,3 +5,4 @@
 "fortytwo"
 
 auto_extdata()
+#extdata(fortytwo)
