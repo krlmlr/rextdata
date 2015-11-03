@@ -64,7 +64,7 @@ use_extdata_ <- function(..., .dots, compress = "xz", pkg = ".",
     file.path(inst_extdata, paste0(names(dots), ".rds")))
 
   message("* Saved datasets ", paste(names(dots), collapse = ", "),
-          " to ")
+          " to ", inst_extdata)
 }
 
 #' Use an object as external dataset
