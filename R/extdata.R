@@ -81,12 +81,12 @@ auto_extdata <- function(assign.env = parent.frame()) {
   extdata_(.dots = names, assign.env = assign.env)
 }
 
-extdata_name <- function() "extdata"
+extdata_name <- function() c("extdata", file.path("inst", "extdata"))
 
 extdata_path <- function(package.env) {
   system.file(extdata_name(), package = packageName(package.env))
 }
 
 inst_extdata_path <- function(pkg) {
-  file.path(pkg$path, "inst", extdata_name())
+  file.path(pkg$path, extdata_name()[[2L]])
 }
