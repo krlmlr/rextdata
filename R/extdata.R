@@ -73,6 +73,7 @@ extdata_one <- function(name, expr, assign.env = parent.frame()) {
 #' \dontrun{
 #' auto_extdata()
 #' }
+#' @export
 auto_extdata <- function(assign.env = parent.frame()) {
   extension_pattern <- "[.]rds$"
   files <- dir(extdata_path(assign.env), pattern = extension_pattern)
