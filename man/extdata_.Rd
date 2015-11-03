@@ -14,7 +14,10 @@ extdata_(..., .dots, assign.env = parent.frame())
 \item{assign.env}{The environment in which to create the delayed assignments.}
 }
 \description{
-An SE version of \code{\link{extdata}}
+Create a delayed assignment for a dataset
+
+A version of \code{\link{extdata}} that uses standard
+  evaluation and is suitable for programming.
 }
 \keyword{internal}
 

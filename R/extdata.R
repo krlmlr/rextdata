@@ -1,11 +1,7 @@
 #' Create a delayed assignment for a dataset
-#'
-#' An SE version of \code{\link{extdata}}
-#'
-#' @param .dots Expressions as lazy objects.
+#' @template se
+#' @templateVar name extdata
 #' @export
-#' @inheritParams extdata
-#' @keywords internal
 extdata_ <- function(..., .dots, assign.env = parent.frame()) {
   dots <- lazyeval::all_dots(.dots, ..., all_named = TRUE)
 
