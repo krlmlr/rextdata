@@ -79,6 +79,7 @@ auto_extdata <- function(assign.env = parent.frame()) {
   extension_pattern <- "[.]rds$"
   files <- dir(extdata_path(assign.env), pattern = extension_pattern)
   names <- gsub(extension_pattern, "", files)
+
   extdata_(.dots = names, assign.env = assign.env)
 }
 
