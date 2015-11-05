@@ -8,7 +8,7 @@
 #' @inheritParams devtools::as.package
 #' @inheritParams use_extdata
 #' @export
-use_rextdata <- function(compress = "xz", pkg = ".") {
+use_rextdata <- function(compress = "xz", pkg = ".", overwrite = FALSE) {
   require_devtools()
 
   pkg <- devtools::as.package(pkg)
@@ -30,8 +30,8 @@ use_rextdata <- function(compress = "xz", pkg = ".") {
 
   loaded <- devtools::load_all(pkg)
 
-  use_extdata_(.dots = loaded$data, pkg = pkg,
-               compress = compress, env = loaded$env)
+  use_extdata_(.dots = loaded$data, pkg = pkg, compress = compress,
+               overwrite = overwrite, env = loaded$env)
 
   message("* Removed data directory")
   unlink(file.path(pkg$path, "data"), recursive = TRUE)
@@ -43,7 +43,7 @@ use_rextdata <- function(compress = "xz", pkg = ".") {
 #' @template se
 #' @export
 #' @templateVar name use_extdata
-use_extdata_ <- function(..., .dots, compress = "xz", pkg = ".",
+use_extdata_ <- function(..., .dots, pkg = ".", compress = "xz",
                          overwrite = FALSE, env = parent.frame())
 {
   dots <- lazyeval::all_dots(.dots, ..., all_named = TRUE)

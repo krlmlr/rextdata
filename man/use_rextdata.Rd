@@ -4,12 +4,14 @@
 \alias{use_rextdata}
 \title{Prepare a package for rextdata}
 \usage{
-use_rextdata(compress = "xz", pkg = ".")
+use_rextdata(compress = "xz", pkg = ".", overwrite = FALSE)
 }
 \arguments{
 \item{compress}{a logical specifying whether saving to a named file is to use
 \code{"gzip"} compression, or one of \code{"gzip"}, \code{"bzip2"} or
 \code{"xz"} to indicate the type of compression to be used.}
+
+\item{overwrite}{overwrite existing files?}
 }
 \description{
 Adds the \code{rextdata} package to the \code{Imports} section of the

@@ -4,7 +4,7 @@
 \alias{use_extdata_}
 \title{Use an object as external dataset}
 \usage{
-use_extdata_(..., .dots, compress = "xz", pkg = ".", overwrite = FALSE,
+use_extdata_(..., .dots, pkg = ".", compress = "xz", overwrite = FALSE,
   env = parent.frame())
 }
 \arguments{
