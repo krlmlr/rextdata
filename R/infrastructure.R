@@ -64,7 +64,8 @@ use_extdata_ <- function(..., .dots, pkg = ".", compress = "xz",
 
   mapply(
     function(dot, file) {
-      saveRDS(lazyeval::lazy_eval(dot, env), file, compress = compress)
+      object <- lazyeval::lazy_eval(dot, env)
+      saveRDS(object, file, compress = compress)
     },
     dots, files)
 
