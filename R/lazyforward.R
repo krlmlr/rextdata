@@ -20,12 +20,3 @@ lazyforward <- function(name, env = parent.frame()) {
   environment(fun) <- env
   fun
 }
-
-def <- function(nse_name, se_name = paste0(nse_name, "_"), env = parent.frame())
-{
-  delayedAssign(nse_name, lazyforward(name = se_name, env = env), assign.env = env)
-  invisible(structure(NULL, class = "lazyforward_def"))
-}
-
-test_ <- function(..., .dots, a=5, b=3, c) {
-}
