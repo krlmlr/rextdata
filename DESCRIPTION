@@ -13,6 +13,7 @@ Imports:
     lazyeval,
     lazyforward
 Suggests:
-    devtools
+    devtools,
+    testthat
 Remotes:
     krlmlr/lazyforward
