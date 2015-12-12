@@ -1,3 +1,12 @@
+Version 0.0-4 (2015-12-13)
+===
+
+- Use private copy of lazyforward code to speed up CRAN release.
+- Use autoroxy.
+- Satisfy R CMD check.
+- Add testing infrastructure.
+
+
 0.0-3
 =====
 
