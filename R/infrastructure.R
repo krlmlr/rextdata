@@ -41,9 +41,25 @@ use_rextdata <- function(compress = "xz", pkg = ".", overwrite = FALSE) {
 }
 
 #' Use an object as external dataset
-#' @template se
+#'
+#' Call this function to save an object as \code{.rds} file in the
+#' \code{inst/extdata} directory for later retrieval via \code{\link{extdata}}
+#' or \code{\link{auto_extdata}}.
+#'
+#'
+#' @param ... objects to save in \code{name} or \code{name = value} format
+#' @param .dots named list of objects to save
+#' @param compress a logical specifying whether saving to a named file is to use
+#'   \code{"gzip"} compression, or one of \code{"gzip"}, \code{"bzip2"} or
+#'   \code{"xz"} to indicate the type of compression to be used.
+#' @param overwrite overwrite existing files?
+#' @param env the environment in which to evaluate the expressions
+#' @inheritParams use_rextdata
+#' @include lazyforward.R
+"use_extdata"
+
 #' @export
-#' @templateVar name use_extdata
+#' @rdname use_extdata
 use_extdata_ <- function(..., .dots, pkg = ".", compress = "xz",
                          overwrite = FALSE, env = parent.frame())
 {
@@ -74,22 +90,8 @@ use_extdata_ <- function(..., .dots, pkg = ".", compress = "xz",
           " to ", inst_extdata)
 }
 
-#' Use an object as external dataset
-#'
-#' Call this function to save an object as \code{.rds} file in the
-#' \code{inst/extdata} directory for later retrieval via \code{\link{extdata}}
-#' or \code{\link{auto_extdata}}.
-#'
-#'
-#' @param ... objects to save in \code{name} or \code{name = value} format
-#' @param compress a logical specifying whether saving to a named file is to use
-#'   \code{"gzip"} compression, or one of \code{"gzip"}, \code{"bzip2"} or
-#'   \code{"xz"} to indicate the type of compression to be used.
-#' @param overwrite overwrite existing files?
-#' @param env the environment in which to evaluate the expressions
-#' @inheritParams use_rextdata
 #' @export
-use_extdata <- lazyforward::lazyforward("use_extdata_")
+use_extdata <- lazyforward("use_extdata_")
 
 require_devtools <- function() {
   requireNamespace("devtools")
