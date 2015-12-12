@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>use_rextdata. rextdata 0.0-4</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="#">rextdata 0.0-4</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>Prepare a package for rextdata</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><div>use_rextdata(compress&nbsp;=&nbsp;"xz", pkg&nbsp;=&nbsp;".", overwrite&nbsp;=&nbsp;FALSE)</div></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>compress</dt>
+      <dd>a logical specifying whether saving to a named file is to use
+<code>"gzip"</code> compression, or one of <code>"gzip"</code>, <code>"bzip2"</code> or
+<code>"xz"</code> to indicate the type of compression to be used.</dd>
+      <dt>pkg</dt>
+      <dd>package description, can be path or package name. See
+<code><a href='http://www.inside-r.org/packages/cran/devtools/docs/as.package'>as.package</a></code> for more information.</dd>
+      <dt>overwrite</dt>
+      <dd>overwrite existing files?</dd>
+    </dl>
+    
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>Adds the <code>rextdata</code> package to the <code>Imports</code> section of the
+<code>DESCRIPTION</code>, creates a helper file that loads all external data
+sets via <code><a href='auto_extdata.html'>auto_extdata</a></code>, and converts all existing data sets
+to <code>extdata</code> files.</p>
+  
+    </div>
+      </div>
+  <div class="span4">
+    <!-- <ul>
+      <li>use_rextdata</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+      
+        
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://getbootstrap.com">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>use_extdata. rextdata 0.0-4</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="#">rextdata 0.0-4</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>Use an object as external dataset</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><div>use_extdata(..., pkg&nbsp;=&nbsp;".", compress&nbsp;=&nbsp;"xz", overwrite&nbsp;=&nbsp;FALSE, env&nbsp;=&nbsp;parent.frame())</div>
+<div>use_extdata_(..., .dots, pkg&nbsp;=&nbsp;".", compress&nbsp;=&nbsp;"xz", overwrite&nbsp;=&nbsp;FALSE, env&nbsp;=&nbsp;parent.frame())</div></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>...</dt>
+      <dd>objects to save in <code>name</code> or <code>name = value</code> format</dd>
+      <dt>pkg</dt>
+      <dd>package description, can be path or package name. See
+<code><a href='http://www.inside-r.org/packages/cran/devtools/docs/as.package'>as.package</a></code> for more information.</dd>
+      <dt>compress</dt>
+      <dd>a logical specifying whether saving to a named file is to use
+<code>"gzip"</code> compression, or one of <code>"gzip"</code>, <code>"bzip2"</code> or
+<code>"xz"</code> to indicate the type of compression to be used.</dd>
+      <dt>overwrite</dt>
+      <dd>overwrite existing files?</dd>
+      <dt>env</dt>
+      <dd>the environment in which to evaluate the expressions</dd>
+      <dt>.dots</dt>
+      <dd>named list of objects to save</dd>
+    </dl>
+    
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>Call this function to save an object as <code>.rds</code> file in the
+<code>inst/extdata</code> directory for later retrieval via <code><a href='extdata.html'>extdata</a></code>
+or <code><a href='auto_extdata.html'>auto_extdata</a></code>.</p>
+  
+    </div>
+      </div>
+  <div class="span4">
+    <!-- <ul>
+      <li>use_extdata</li><li>use_extdata_</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+      
+        
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://getbootstrap.com">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>
