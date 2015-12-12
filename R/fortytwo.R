@@ -2,7 +2,8 @@
 #'
 #' To the question.
 #' @export
-"fortytwo"
+#' @name fortytwo
+NULL
 
 auto_extdata()
 #extdata(fortytwo)
