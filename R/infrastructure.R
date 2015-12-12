@@ -5,7 +5,8 @@
 #' sets via \code{\link{auto_extdata}}, and converts all existing data sets
 #' to \code{extdata} files.
 #'
-#' @inheritParams devtools::as.package
+#' @param pkg package description, can be path or package name. See
+#'   \code{\link[devtools]{as.package}} for more information.
 #' @inheritParams use_extdata
 #' @export
 use_rextdata <- function(compress = "xz", pkg = ".", overwrite = FALSE) {

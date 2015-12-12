@@ -10,6 +10,9 @@ use_extdata(..., pkg = ".", compress = "xz", overwrite = FALSE,
 \arguments{
 \item{...}{objects to save in \code{name} or \code{name = value} format}
 
+\item{pkg}{package description, can be path or package name.  See
+\code{\link{as.package}} for more information.}
+
 \item{compress}{a logical specifying whether saving to a named file is to use
 \code{"gzip"} compression, or one of \code{"gzip"}, \code{"bzip2"} or
 \code{"xz"} to indicate the type of compression to be used.}
