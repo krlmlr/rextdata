@@ -19,4 +19,4 @@ Collate:
     'extdata.R'
     'fortytwo.R'
     'infrastructure.R'
-    'rextdata.R'
+    'zzz-autoroxy.R'
