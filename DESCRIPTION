@@ -8,12 +8,11 @@ Description: Provides helper functions to access data files in the "extdata"
 License: GPL-3
 GitHub: https://github.com/krlmlr/rextdata
 BugReports: https://github.com/krlmlr/rextdata/issues
-RoxygenNote: 5.0.0.9000
+RoxygenNote: 5.0.1.9000
 Imports:
     lazyeval,
     lazyforward
 Suggests:
     devtools,
     testthat
-Remotes:
-    krlmlr/lazyforward
+Remotes: krlmlr/lazyforward

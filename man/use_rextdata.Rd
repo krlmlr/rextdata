@@ -11,6 +11,9 @@ use_rextdata(compress = "xz", pkg = ".", overwrite = FALSE)
 \code{"gzip"} compression, or one of \code{"gzip"}, \code{"bzip2"} or
 \code{"xz"} to indicate the type of compression to be used.}
 
+\item{pkg}{package description, can be path or package name.  See
+\code{\link{as.package}} for more information.}
+
 \item{overwrite}{overwrite existing files?}
 }
 \description{

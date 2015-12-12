@@ -5,7 +5,7 @@
 #' sets via \code{\link{auto_extdata}}, and converts all existing data sets
 #' to \code{extdata} files.
 #'
-#' @inheritParams devtools::as.package
+#' @inheritParams devtools::load_all
 #' @inheritParams use_extdata
 #' @export
 use_rextdata <- function(compress = "xz", pkg = ".", overwrite = FALSE) {
