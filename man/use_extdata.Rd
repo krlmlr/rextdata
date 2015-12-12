@@ -2,13 +2,20 @@
 % Please edit documentation in R/infrastructure.R
 \name{use_extdata}
 \alias{use_extdata}
+\alias{use_extdata_}
 \title{Use an object as external dataset}
 \usage{
 use_extdata(..., pkg = ".", compress = "xz", overwrite = FALSE,
   env = parent.frame())
+
+use_extdata_(..., .dots, pkg = ".", compress = "xz", overwrite = FALSE,
+  env = parent.frame())
 }
 \arguments{
 \item{...}{objects to save in \code{name} or \code{name = value} format}
+
+\item{pkg}{package description, can be path or package name. See
+\code{\link[devtools]{as.package}} for more information.}
 
 \item{compress}{a logical specifying whether saving to a named file is to use
 \code{"gzip"} compression, or one of \code{"gzip"}, \code{"bzip2"} or
@@ -17,6 +24,8 @@ use_extdata(..., pkg = ".", compress = "xz", overwrite = FALSE,
 \item{overwrite}{overwrite existing files?}
 
 \item{env}{the environment in which to evaluate the expressions}
+
+\item{.dots}{named list of objects to save}
 }
 \description{
 Call this function to save an object as \code{.rds} file in the

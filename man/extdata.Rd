@@ -2,14 +2,19 @@
 % Please edit documentation in R/extdata.R
 \name{extdata}
 \alias{extdata}
+\alias{extdata_}
 \title{Create a delayed assignment for a dataset}
 \usage{
 extdata(..., assign.env = parent.frame())
+
+extdata_(..., .dots, assign.env = parent.frame())
 }
 \arguments{
 \item{...}{Expressions for which delayed assignments are created.}
 
 \item{assign.env}{The environment in which to create the delayed assignments.}
+
+\item{.dots}{Expressions as lazy objects.}
 }
 \description{
 This function creates one or more delayed assignments.  It is focused on data
@@ -26,7 +31,7 @@ a delayed assignment with the specified name is created via
 argument; if the argument is a single name, the corresponding \code{.rds}
 data file from the \code{extdata} directory will be loaded.
 
-The function \code{\link{extdata_}} is a standard-evaluation version of the
+The function \code{extdata_} is a standard-evaluation version of the
 above.  See the "lazyeval" vignette for details.
 }
 \examples{
