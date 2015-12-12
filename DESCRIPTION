@@ -10,9 +10,13 @@ GitHub: https://github.com/krlmlr/rextdata
 BugReports: https://github.com/krlmlr/rextdata/issues
 RoxygenNote: 5.0.1.9000
 Imports:
-    lazyeval,
-    lazyforward
+    lazyeval
 Suggests:
     devtools,
     testthat
-Remotes: krlmlr/lazyforward
+Collate:
+    'lazyforward.R'
+    'extdata.R'
+    'fortytwo.R'
+    'infrastructure.R'
+    'rextdata.R'
