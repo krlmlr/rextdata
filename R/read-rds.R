@@ -39,6 +39,7 @@ read_rds <- function(..., assign.env = parent.frame()) {
 }
 
 name_from_rds <- function(x) {
+  if (length(x) == 0L) return()
   gsub("[.]rds$", "", basename(x))
 }
 
