@@ -43,7 +43,7 @@ use_rextdata <- function(compress = "xz", pkg = ".", overwrite = FALSE) {
 #' Use an object as external dataset
 #'
 #' Call this function to save an object as \code{.rds} file in the
-#' \code{inst/extdata} directory for later retrieval via \code{\link{extdata}}
+#' \code{inst/extdata} directory for later retrieval via \code{\link{read_rds}}
 #' or \code{\link{auto_extdata}}.
 #'
 #'
