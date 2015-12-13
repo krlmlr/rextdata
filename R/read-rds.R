@@ -1,33 +1,19 @@
-#' Create a delayed assignment for a dataset
+#' Delay-load an RDS file
 #'
-#' This function creates one or more delayed assignments.  It is focused on data
-#' stored in the \code{extdata} directory, and therefore especially useful for
-#' package development.  The main advantages over R's internal data loading
-#' mechanism are faster package build times; the delayed assignment makes sure
-#' that the data is loaded only if necessary.
+#' This function creates one or more delayed assignments that load RDS files
+#' (via \code{\link{readRDS}}). For unnamed arguments, names are derived
+#' from the basename of the RDS files.  Paths are normalized (via
+#' \code{\link{normalizePath}}); a warning is thrown if the file
+#' does not exist.
 #'
-#' The "dots" argument can be named or unnamed; for unnamed arguments, names
-#' will be assigned by \code{\link[lazyeval]{all_dots}}.  For each argument,
-#' a delayed assignment with the specified name is created via
-#' \code{\link{delayedAssign}}.  The delayed assignment will evaluate the
-#' argument; if the argument is a single name, the corresponding \code{.rds}
-#' data file from the \code{extdata} directory will be loaded.
-#'
-#' The function \code{read_rds_} is a standard-evaluation version of the
-#' above.  See the "lazyeval" vignette for details.
-#'
-#' @param ... Expressions for which delayed assignments are created.
-#' @param .dots Expressions as lazy objects.
+#' @param ... Paths to RDS files.
 #' @param assign.env The environment in which to create the delayed assignments.
 #'
 #' @examples
 #' \dontrun{
 #' # Creates a delayed assignment "fortytwo" which loads the file
 #' # "extdata/fortytwo.rds"
-#' extdata(fortytwo = readRDS(system.file("extdata", "fortytwo.rds",
-#'         package = "mypackage")))
-#' # A shorter version of the above
-#' read_rds(fortytwo)
+#' read_rds(fortytwo = system.file("extdata", "fortytwo.rds"))
 #' }
 #' @export
 read_rds <- function(..., assign.env = parent.frame()) {
