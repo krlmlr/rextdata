@@ -5,5 +5,6 @@
 #' @name fortytwo
 NULL
 
+#' @include read-rds.R
 auto_extdata()
-#extdata(fortytwo)
+#read_rds(fortytwo)

@@ -13,7 +13,7 @@
 #' argument; if the argument is a single name, the corresponding \code{.rds}
 #' data file from the \code{extdata} directory will be loaded.
 #'
-#' The function \code{extdata_} is a standard-evaluation version of the
+#' The function \code{read_rds_} is a standard-evaluation version of the
 #' above.  See the "lazyeval" vignette for details.
 #'
 #' @param ... Expressions for which delayed assignments are created.
@@ -27,14 +27,14 @@
 #' extdata(fortytwo = readRDS(system.file("extdata", "fortytwo.rds",
 #'         package = "mypackage")))
 #' # A shorter version of the above
-#' extdata(fortytwo)
+#' read_rds(fortytwo)
 #' }
 #' @include lazyforward.R
-"extdata"
+"read_rds"
 
 #' @export
-#' @rdname extdata
-extdata_ <- function(..., .dots, assign.env = parent.frame()) {
+#' @rdname read_rds
+read_rds_ <- function(..., .dots, assign.env = parent.frame()) {
   dots <- lazyeval::all_dots(.dots, ..., all_named = TRUE)
 
   dots_expr <- lapply(
@@ -48,15 +48,15 @@ extdata_ <- function(..., .dots, assign.env = parent.frame()) {
       dot
   })
 
-  ret <- mapply(extdata_one, names(dots_expr), dots_expr, MoreArgs = list(assign.env = assign.env))
+  ret <- mapply(read_rds_one, names(dots_expr), dots_expr, MoreArgs = list(assign.env = assign.env))
   invisible(ret)
 }
 
 #' @export
-extdata <- lazyforward("extdata_")
+read_rds <- lazyforward("read_rds_")
 
 
-extdata_one <- function(name, expr, assign.env = parent.frame()) {
+read_rds_one <- function(name, expr, assign.env = parent.frame()) {
   force(name)
   force(expr)
   delayedAssign(name, lazyeval::lazy_eval(expr), assign.env = assign.env)
@@ -66,12 +66,12 @@ extdata_one <- function(name, expr, assign.env = parent.frame()) {
 #' Create delayed assignments for all datasets in a package
 #'
 #' This function lists all \code{.rds} files in the \code{extdata/} directory
-#' and calls \code{\link{extdata_}} for each.  This offers an easy method to
+#' and calls \code{\link{read_rds_}} for each.  This offers an easy method to
 #' simulate R's lazy-loading mechanism for data: Place all datasets in
 #' individual \code{.rds} files in \code{extdata/}, and call this function
 #' somewhere in your package's source files.
 #'
-#' @inheritParams extdata
+#' @inheritParams read_rds
 #' @examples
 #' \dontrun{
 #' auto_extdata()
@@ -82,7 +82,7 @@ auto_extdata <- function(assign.env = parent.frame()) {
   files <- dir(extdata_path(assign.env), pattern = extension_pattern)
   names <- gsub(extension_pattern, "", files)
 
-  extdata_(.dots = names, assign.env = assign.env)
+  read_rds_(.dots = names, assign.env = assign.env)
 }
 
 extdata_name <- function() c("extdata", file.path("inst", "extdata"))
