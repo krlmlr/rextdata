@@ -42,36 +42,3 @@ name_from_rds <- function(x) {
   if (length(x) == 0L) return()
   gsub("[.]rds$", "", basename(x))
 }
-
-
-#' Create delayed assignments for all datasets in a package
-#'
-#' This function lists all \code{.rds} files in the \code{extdata/} directory
-#' and calls \code{\link{read_rds}}.  This offers an easy method to
-#' simulate R's lazy-loading mechanism for data: Place all datasets in
-#' individual \code{.rds} files in \code{extdata/}, and call this function
-#' somewhere in your package's source files.
-#'
-#' @inheritParams read_rds
-#' @examples
-#' \dontrun{
-#' auto_extdata()
-#' }
-#' @export
-auto_extdata <- function(assign.env = parent.frame()) {
-  extension_pattern <- "[.]rds$"
-  files <- dir(extdata_path(assign.env), pattern = extension_pattern,
-               full.names = TRUE)
-
-  read_rds(files, assign.env = assign.env)
-}
-
-extdata_name <- function() c("extdata", file.path("inst", "extdata"))
-
-extdata_path <- function(package.env) {
-  system.file(extdata_name(), package = packageName(package.env))[[1L]]
-}
-
-inst_extdata_path <- function(pkg) {
-  file.path(pkg$path, extdata_name()[[2L]])
-}
