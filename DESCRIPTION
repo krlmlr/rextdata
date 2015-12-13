@@ -1,7 +1,7 @@
 Encoding: UTF-8
 Package: rextdata
 Title: Simple Access to Data Stored in "extdata" Directory
-Version: 0.0-5
+Version: 0.0-6
 Date: 2015-12-13
 Authors@R: as.person("Kirill Müller <krlmlr+r@mailbox.org> [aut, cre]")
 Description: Provides helper functions to access data files in the
