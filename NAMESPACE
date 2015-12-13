@@ -3,6 +3,8 @@
 export(auto_extdata)
 export(delayed_assign)
 export(delayed_assign_)
+export(extdata)
+export(extdata_)
 export(fortytwo)
 export(read_rds)
 export(use_extdata)

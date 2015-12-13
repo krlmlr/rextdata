@@ -18,6 +18,7 @@ Suggests:
 Collate:
     'lazyforward.R'
     'delayed-assign.R'
+    'extdata.R'
     'read-rds.R'
     'fortytwo.R'
     'infrastructure.R'
