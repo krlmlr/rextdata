@@ -94,5 +94,5 @@ use_extdata_ <- function(..., .dots, pkg = ".", compress = "xz",
 use_extdata <- lazyforward("use_extdata_")
 
 require_devtools <- function() {
-  requireNamespace("devtools")
+  loadNamespace("devtools")
 }
