@@ -20,3 +20,4 @@ Collate:
     'extdata.R'
     'fortytwo.R'
     'infrastructure.R'
+    'zzz-autoroxy.R'
