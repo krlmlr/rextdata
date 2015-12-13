@@ -1,3 +1,11 @@
+Version 0.0-5 (2015-12-13)
+===
+
+- Raise error if `devtools` is required but not available.
+- New `read_rds()`.
+- New `delayed_assign()`.
+
+
 Version 0.0-4 (2015-12-13)
 ===
 

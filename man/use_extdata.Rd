@@ -29,7 +29,7 @@ use_extdata_(..., .dots, pkg = ".", compress = "xz", overwrite = FALSE,
 }
 \description{
 Call this function to save an object as \code{.rds} file in the
-\code{inst/extdata} directory for later retrieval via \code{\link{extdata}}
+\code{inst/extdata} directory for later retrieval via \code{\link{read_rds}}
 or \code{\link{auto_extdata}}.
 }
 
