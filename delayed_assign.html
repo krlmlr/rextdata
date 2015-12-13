@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>use_extdata. rextdata 0.0-5</title>
+<title>delayed_assign. rextdata 0.0-5</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -48,45 +48,57 @@
         
       </header>
       
-      <h1>Use an object as external dataset</h1>
+      <h1>Create a delayed assignment</h1>
 
 <div class="row">
   <div class="span8">
     <h2>Usage</h2>
-    <pre><div>use_extdata(..., pkg&nbsp;=&nbsp;".", compress&nbsp;=&nbsp;"xz", overwrite&nbsp;=&nbsp;FALSE, env&nbsp;=&nbsp;parent.frame())</div>
-<div>use_extdata_(..., .dots, pkg&nbsp;=&nbsp;".", compress&nbsp;=&nbsp;"xz", overwrite&nbsp;=&nbsp;FALSE, env&nbsp;=&nbsp;parent.frame())</div></pre>
+    <pre><div>delayed_assign(..., assign.env&nbsp;=&nbsp;parent.frame())</div>
+<div>delayed_assign_(..., .dots, assign.env&nbsp;=&nbsp;parent.frame())</div></pre>
     
     <h2>Arguments</h2>
     <dl>
       <dt>...</dt>
-      <dd>objects to save in <code>name</code> or <code>name = value</code> format</dd>
-      <dt>pkg</dt>
-      <dd>package description, can be path or package name. See
-<code><a href='http://www.inside-r.org/packages/cran/devtools/docs/as.package'>as.package</a></code> for more information.</dd>
-      <dt>compress</dt>
-      <dd>a logical specifying whether saving to a named file is to use
-<code>"gzip"</code> compression, or one of <code>"gzip"</code>, <code>"bzip2"</code> or
-<code>"xz"</code> to indicate the type of compression to be used.</dd>
-      <dt>overwrite</dt>
-      <dd>overwrite existing files?</dd>
-      <dt>env</dt>
-      <dd>the environment in which to evaluate the expressions</dd>
+      <dd>Expressions for which delayed assignments are created.</dd>
+      <dt>assign.env</dt>
+      <dd>The environment in which to create the delayed assignments.</dd>
       <dt>.dots</dt>
-      <dd>named list of objects to save</dd>
+      <dd>Expressions as lazy objects.</dd>
     </dl>
     
     <div class="Description">
       <h2>Description</h2>
 
-      <p>Call this function to save an object as <code>.rds</code> file in the
-<code>inst/extdata</code> directory for later retrieval via <code><a href='read_rds.html'>read_rds</a></code>
-or <code><a href='auto_extdata.html'>auto_extdata</a></code>.</p>
+      <p>This function creates one or more delayed assignments in a more natural
+way compared to <code><a href='http://www.inside-r.org/r-doc/base/delayedAssign'>delayedAssign</a></code>.</p>
   
     </div>
-      </div>
+
+    <div class="Details">
+      <h2>Details</h2>
+
+      <p>The "dots" argument can be named or unnamed; for unnamed arguments, names
+will be assigned by <code><a href='http://www.inside-r.org/packages/cran/lazyeval/docs/all_dots'>all_dots</a></code>.  For each argument,
+a delayed assignment with the specified name is created via
+<code><a href='http://www.inside-r.org/r-doc/base/delayedAssign'>delayedAssign</a></code>.  The delayed assignment will evaluate the
+argument via <code><a href='http://www.inside-r.org/packages/cran/lazyeval/docs/lazy_eval'>lazy_eval</a></code>.</p>
+  
+      <p>The function <code>delayed_assign_</code> is a standard-evaluation version of the
+above.  See the "lazyeval" vignette for details.</p>
+  
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class='input'>## Not run: 
+# # Creates a delayed assignment &quot;fortytwo&quot; which takes about 7.5 million
+# # years to compute:
+# delayed_assign(fortytwo = { Sys.sleep(7.5e6 * 365 * 24 * 60 * 60); 42 })
+# ## End(Not run)
+</div></pre>
+  </div>
   <div class="span4">
     <!-- <ul>
-      <li>use_extdata</li><li>use_extdata_</li>
+      <li>delayed_assign</li><li>delayed_assign_</li>
     </ul>
     <ul>
       
