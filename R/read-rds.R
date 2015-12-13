@@ -29,37 +29,39 @@
 #' # A shorter version of the above
 #' read_rds(fortytwo)
 #' }
-#' @include lazyforward.R
-"read_rds"
-
 #' @export
-#' @rdname read_rds
-read_rds_ <- function(..., .dots, assign.env = parent.frame()) {
-  dots <- lazyeval::all_dots(.dots, ..., all_named = TRUE)
+read_rds <- function(..., assign.env = parent.frame()) {
+  dots <- c(...)
+  if (length(dots) == 0L) {
+    return()
+  }
+  unnamed <- (names(dots) == "")
+  if (length(unnamed) == 0L) {
+    unnamed <- TRUE
+  }
+
+  names(dots)[unnamed] <- name_from_rds(dots[unnamed])
 
   dots_expr <- lapply(
     dots,
     function(dot) {
-      if (is.name(dot$expr)) {
-        file_path <- file.path(extdata_path(assign.env), paste0(as.character(dot$expr), ".rds"))
-        dot$expr <- bquote(readRDS(.(file_path)))
-      }
-
-      dot
+      dot <- normalizePath(dot)
+      bquote(readRDS(.(dot)))
   })
 
   ret <- mapply(read_rds_one, names(dots_expr), dots_expr, MoreArgs = list(assign.env = assign.env))
   invisible(ret)
 }
 
-#' @export
-read_rds <- lazyforward("read_rds_")
+name_from_rds <- function(x) {
+  gsub("[.]rds$", "", basename(x))
+}
 
 
 read_rds_one <- function(name, expr, assign.env = parent.frame()) {
   force(name)
   force(expr)
-  delayedAssign(name, lazyeval::lazy_eval(expr), assign.env = assign.env)
+  delayedAssign(name, eval(expr), assign.env = assign.env)
   invisible(name)
 }
 
@@ -79,10 +81,10 @@ read_rds_one <- function(name, expr, assign.env = parent.frame()) {
 #' @export
 auto_extdata <- function(assign.env = parent.frame()) {
   extension_pattern <- "[.]rds$"
-  files <- dir(extdata_path(assign.env), pattern = extension_pattern)
-  names <- gsub(extension_pattern, "", files)
+  files <- dir(extdata_path(assign.env), pattern = extension_pattern,
+               full.names = TRUE)
 
-  read_rds_(.dots = names, assign.env = assign.env)
+  read_rds(files, assign.env = assign.env)
 }
 
 extdata_name <- function() c("extdata", file.path("inst", "extdata"))

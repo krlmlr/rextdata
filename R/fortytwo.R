@@ -7,4 +7,4 @@ NULL
 
 #' @include read-rds.R
 auto_extdata()
-#read_rds(fortytwo)
+#read_rds("extdata/fortytwo.rds")
