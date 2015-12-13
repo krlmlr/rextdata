@@ -17,6 +17,8 @@ Suggests:
     testthat
 Collate:
     'lazyforward.R'
+    'delayed-assign.R'
     'extdata.R'
     'fortytwo.R'
     'infrastructure.R'
+    'zzz-autoroxy.R'
