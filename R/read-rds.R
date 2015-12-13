@@ -35,21 +35,13 @@ read_rds <- function(..., assign.env = parent.frame()) {
       bquote(readRDS(.(dot)))
   })
 
-  ret <- mapply(read_rds_one, names(dots_expr), dots_expr, MoreArgs = list(assign.env = assign.env))
-  invisible(ret)
+  delayed_assign_(.dots = dots_expr, assign.env = assign.env)
 }
 
 name_from_rds <- function(x) {
   gsub("[.]rds$", "", basename(x))
 }
 
-
-read_rds_one <- function(name, expr, assign.env = parent.frame()) {
-  force(name)
-  force(expr)
-  delayedAssign(name, eval(expr), assign.env = assign.env)
-  invisible(name)
-}
 
 #' Create delayed assignments for all datasets in a package
 #'
