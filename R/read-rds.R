@@ -47,7 +47,7 @@ name_from_rds <- function(x) {
 #' Create delayed assignments for all datasets in a package
 #'
 #' This function lists all \code{.rds} files in the \code{extdata/} directory
-#' and calls \code{\link{read_rds_}} for each.  This offers an easy method to
+#' and calls \code{\link{read_rds}}.  This offers an easy method to
 #' simulate R's lazy-loading mechanism for data: Place all datasets in
 #' individual \code{.rds} files in \code{extdata/}, and call this function
 #' somewhere in your package's source files.
