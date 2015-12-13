@@ -23,7 +23,7 @@ read_rds <- function(..., assign.env = parent.frame()) {
   }
   unnamed <- (names(dots) == "")
   if (length(unnamed) == 0L) {
-    unnamed <- TRUE
+    unnamed <- rep(TRUE, length(dots))
   }
 
   names(dots)[unnamed] <- name_from_rds(dots[unnamed])
