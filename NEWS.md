@@ -1,3 +1,9 @@
+Version 0.0-6 (2015-12-13)
+===
+
+- Fix loading unnamed RDS files for more than one file.
+
+
 Version 0.0-5 (2015-12-13)
 ===
 
