@@ -3,7 +3,7 @@ Package: rextdata
 Title: Simple Access to Data Stored in "extdata" Directory
 Version: 0.0-6
 Date: 2015-12-13
-Authors@R: as.person("Kirill Müller <krlmlr+r@mailbox.org> [aut, cre]")
+Authors@R: person(given = "Kirill", family = "Müller", role = c("aut", "cre"), email = "krlmlr+r@mailbox.org")
 Description: Provides helper functions to access data files in the
     "extdata" directory.
 License: GPL-3
